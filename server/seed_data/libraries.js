@@ -122,7 +122,7 @@ module.exports = [
   {
     id: 86493,
     name: "Roxies Reads",
-    address: "",
+    address: "3205 West King Edward Ave",
     region: "Vancouver, BC",
     lat: 49.2503326,
     lng: -123.1759721,

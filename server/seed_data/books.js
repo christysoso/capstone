@@ -52,7 +52,7 @@ module.exports=[
         id:8,
         title:"Much Ado About Nothing",
         author:"William Shakespeare",
-        comment:"White Oleander",
+        comment:"My favourite read. A great read to escape too!",
         library_id:96166,
     },
     {
