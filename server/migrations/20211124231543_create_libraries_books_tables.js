@@ -22,9 +22,14 @@ exports.up = function (knex) {
         .inTable("libraries")
         .onUpdate("CASCADE")
         .onDelete("CASCADE");
-    });
+    })
+    .createTable("users", (table) => {
+        table.increments("id").primary();
+        table.string("password").notNullable();
+        table.string("username").notNullable();
+      });
 };
 
 exports.down = function (knex) {
-    return knex.schema.dropTable("books").dropTable('libraries');
+    return knex.schema.dropTable("users").dropTable("books").dropTable('libraries');
 };
