@@ -8,8 +8,7 @@ const librariesRoutes = require("./routes/librariesRoutes");
 const booksRoutes = require("./routes/booksRoutes");
 const usersRoutes = require('./routes/usersRoutes');
 const jwt = require('jsonwebtoken');
-const bycrpt = require('bcrypt');
-const saltRounds = 10;
+
 
 app.use(express.json());
 app.use(cors());

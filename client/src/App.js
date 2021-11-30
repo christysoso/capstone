@@ -9,6 +9,7 @@ import GoogleMaps from "./components/GoogleMaps/GoogleMaps";
 import LoginPage from "./components/LoginPage/LoginPage";
 import LibrariesPage from "./pages/LibrariesPage/LibrariesPage";
 import LibrariesBooksPage from "./pages/LibrariesBooksPage/LibrariesBooksPage";
+import AddBook from "./components/AddBook/AddBook";
 
 function App() {
   return (
@@ -31,6 +32,12 @@ function App() {
             path="/libraries/:id"
             exact
             render={(routerProps) => <LibrariesBooksPage {...routerProps} />}
+          />
+
+<Route
+            path="/books/add"
+            exact
+            render={(routerProps) => <AddBook {...routerProps} />}
           />
 
         
