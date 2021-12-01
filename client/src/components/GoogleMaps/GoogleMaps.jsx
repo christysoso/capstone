@@ -1,4 +1,6 @@
 import React from "react";
+import Header from "../Header/Header";
+import "./GoogleMaps.scss";
 import {
   GoogleMap,
   useLoadScript,
@@ -9,8 +11,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const mapContainerStyle = {
-  width: "100vw",
+  width: "90vw",
   height: "50vh",
+  borderRadius: "20px"
+
 };
 
 const center = {
@@ -33,10 +37,11 @@ function GoogleMaps(props) {
 
   React.useEffect(() => {
     axios
-      .get(`http://localhost:5050/libraries`)
+      .get(`http://localhost:5000/libraries`)
       .then((response) => {
         setLibraries(response.data);
         return response.data[0].id;
+        // return response.data.map((library) => library.id);
       })
       .then((response) => {
         axios
@@ -47,10 +52,6 @@ function GoogleMaps(props) {
           });
       });
   }, []);
-
- 
-
-
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -66,12 +67,14 @@ function GoogleMaps(props) {
   if (!isLoaded) return "loading maps";
 
   return (
-    <div className="App">
+    <div className="googleMaps">
+        <Header isLibraryActive ={true} isBooksActive={false}/>
       <Locate panTo={panTo} />
 
+        <div className="container">
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={8}
+        zoom={11}
         center={center}
         options={options}
         onLoad={onMapLoad}
@@ -101,9 +104,11 @@ function GoogleMaps(props) {
           </InfoWindow>
         )}
       </GoogleMap>
+      </div>
 
       {selectedLibrary && (
         <section className="libraries">
+            <div className="container2">
           <h1 className="libraries__name">{selectedLibrary.name}</h1>
 
           <div className="libraries__info">
@@ -118,8 +123,9 @@ function GoogleMaps(props) {
             </div>
 
             <Link to={`/libraries/${selectedLibrary.id}`}>
-            <p className="libraries__books">See Books</p>
+              <p className="libraries__books">See Books</p>
             </Link>
+          </div>
           </div>
         </section>
       )}

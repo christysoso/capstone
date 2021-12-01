@@ -21,7 +21,7 @@ class AddBook extends React.Component {
         console.log(library);
         
     axios
-      .post(`http://localhost:5050/books`, {
+      .post(`http://localhost:5000/books`, {
         title: title,
         author: author,
         comment: comment,
@@ -37,7 +37,7 @@ class AddBook extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`http://localhost:5050/libraries`)
+      .get(`http://localhost:5000/libraries`)
       .then((response) => {
         this.setState({
           allLibraries: response.data,

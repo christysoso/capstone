@@ -10,4 +10,6 @@ router
   .get(booksController.singleBook)
   .delete(booksController.deleteBook);
 
+router.route("/info/info").get(booksController.bookLibraryInfo);
+
 module.exports = router;

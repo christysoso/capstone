@@ -32,14 +32,29 @@ exports.addBook = (req, res) => {
     });
 };
 
-exports.deleteBook = (req, res) =>{
-    knex("books")
+exports.deleteBook = (req, res) => {
+  knex("books")
     .delete()
-    .where({id: req.params.id})
-    .then((data)=>{
-        res.status(200).json({message: "Your book as been deleted", data:data})
+    .where({ id: req.params.id })
+    .then((data) => {
+      res
+        .status(200)
+        .json({ message: "Your book as been deleted", data: data });
     })
-    .catch ((err)=>{
-        res.status(400).send(`Error deleting this book ${err}`);
-    })
+    .catch((err) => {
+      res.status(400).send(`Error deleting this book ${err}`);
+    });
 };
+
+exports.bookLibraryInfo = (req, res) => {
+  knex("books")
+    .join("libraries", "books.library_id", "=", "libraries.id")
+    .select("books.title","books.id", "books.library_id","books.author", "libraries.address")
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(400).send("Error retrieving getting data");
+    });
+};
+

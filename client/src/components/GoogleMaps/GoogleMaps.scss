@@ -1,0 +1,39 @@
+@use "../../styles/functions" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/global" as *;
+@use "../../styles/variables" as *;
+
+.container{
+    display:flex;
+    justify-content:center;
+    
+}
+
+.container2{
+    margin:toRem(16);
+}
+
+.libraries{
+
+
+    &__name{
+        
+    }
+    
+    &__info{
+        
+    }
+
+    &__headers{
+
+    }
+
+    &__details{
+
+
+    }
+
+    &__books{
+
+    }
+}

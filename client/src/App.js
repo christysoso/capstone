@@ -12,9 +12,18 @@ import LibrariesBooksPage from "./pages/LibrariesBooksPage/LibrariesBooksPage";
 import AddBook from "./components/AddBook/AddBook";
 
 function App() {
+
+
+
+
+
+  
   return (
     <Router>
       <div className="App">
+
+
+
         <Switch>
           <Redirect exact from="/" to="/libraries" />
           <Route
@@ -34,7 +43,7 @@ function App() {
             render={(routerProps) => <LibrariesBooksPage {...routerProps} />}
           />
 
-<Route
+            <Route
             path="/books/add"
             exact
             render={(routerProps) => <AddBook {...routerProps} />}
@@ -43,8 +52,10 @@ function App() {
         
 
           {/* <GoogleMaps /> */}
-          {/* <LoginPage /> */}
+          
         </Switch>
+
+        <LoginPage />
       </div>
     </Router>
   );

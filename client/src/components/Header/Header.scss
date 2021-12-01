@@ -1,0 +1,48 @@
+@use "../../styles/functions" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/global" as *;
+@use "../../styles/variables" as *;
+
+
+.header{
+    background-color: $main-color;
+    // color: white;
+    &__logo{
+
+    }
+
+    &__logo--name{
+
+    }
+
+    &__left{
+        
+    }
+
+    &__left--library-active{
+        background-color:white;
+        border-radius: 10px 10px  0 0;
+    }
+
+    &__right{
+        
+
+    }
+
+    &__right--book-active{
+        background-color:white;
+        border-radius: 10px 10px  0 0;
+    }
+
+    &__tab{
+        padding: toRem(4) toRem(16);
+
+    }
+
+    &__container{
+        display:flex;
+        justify-content:space-evenly;
+    }
+
+
+}
