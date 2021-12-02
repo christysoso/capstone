@@ -1,3 +1,50 @@
 @use "../../styles/functions" as *;
 @use "../../styles/mixins" as *;
 @use "../../styles/global" as *;
+@use "../../styles/variables" as *;
+
+
+.delete{
+    position:absolute;
+    left: toRem(26);
+    background: $background-color;
+    border-radius: 20px;
+    padding: toRem(16);
+    border: $text-color solid 2px;
+    width: toRem(320);
+
+
+    &__container{
+
+    }
+
+    &__title{
+        display:flex;
+        justify-content:space-between;
+        
+    }
+
+    &__info{
+        padding: toRem(16);
+    }
+
+    &__button{
+        
+        width: toRem(100);
+        background-color: $btn-color;
+        border-radius: 20px;
+        text-align:center;
+        padding: toRem(4) toRem(8);
+        border: $text-color solid 2px;
+        border-radius: 20px;
+        font-size: toRem(14);
+    }
+}
+
+.close{
+    background-color: $close;
+    border-radius: 50%;
+    padding: toRem(2);
+    border: solid $text-color 1px;
+    // width: toRem(20);
+}

@@ -18,7 +18,7 @@ function LibrariesPage() {
     // }, []);
   
     React.useEffect(() => {
-      axios.get(`http://localhost:5050/libraries`).then((response) => {
+      axios.get(`http://localhost:5000/libraries`).then((response) => {
         setLibrary(response.data);
         console.log(response.data);
       });

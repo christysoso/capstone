@@ -55,7 +55,7 @@ function App() {
           
         </Switch>
 
-        <LoginPage />
+        {/* <LoginPage /> */}
       </div>
     </Router>
   );

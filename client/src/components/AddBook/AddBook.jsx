@@ -3,58 +3,62 @@ import "./AddBook.scss";
 import axios from "axios";
 
 class AddBook extends React.Component {
-  state = {
-    allLibraries: null,
-    activeBooks: null,
-  };
+//   state = {
+//     allLibraries: null,
+//     activeBooks: null,
+//   };
 
-  addBookInfo = (e) => {
-    e.preventDefault();
+//   addBookInfo = (e) => {
+//     e.preventDefault();
 
-    const form = e.target;
-    const title = form.title.value;
-    const author = form.author.value;
-    const comment = form.comment.value;
-    const library = this.state.allLibraries.find(
-      (libraries) => Number(form.library.value) === libraries.id
-    );
-        console.log(library);
+//     const form = e.target;
+//     const title = form.title.value;
+//     const author = form.author.value;
+//     const comment = form.comment.value;
+//     const library = this.state.allLibraries.find(
+//       (libraries) => Number(form.library.value) === libraries.id
+//     );
+//         console.log(library);
         
-    axios
-      .post(`http://localhost:5000/books`, {
-        title: title,
-        author: author,
-        comment: comment,
-        library_id: Number(library.id)
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error)=>{
-          console.log(error);
-      });
-  };
+//     axios
+//       .post(`http://localhost:5000/books`, {
+//         title: title,
+//         author: author,
+//         comment: comment,
+//         library_id: Number(library.id)
+//       })
+//       .then((response) => {
+//           this.SetState({
+//             bookList:response.data
+//           })
+        
+//       })
+//       .catch((error)=>{
+//           console.log(error);
+//       });
+//   };
 
-  componentDidMount() {
-    axios
-      .get(`http://localhost:5000/libraries`)
-      .then((response) => {
-        this.setState({
-          allLibraries: response.data,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
+//   componentDidMount() {
+//     axios
+//       .get(`http://localhost:5000/libraries`)
+//       .then((response) => {
+//         this.setState({
+//           allLibraries: response.data,
+//         });
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//       });
+//   }
+ 
   render() {
-    console.log(this.state.allLibraries);
+   
+    
     return (
       <section>
-        {this.state.allLibraries && (
+        {this.props.allLibraries && (
           <>
-            <form onSubmit={this.addBookInfo}>
+            <form onSubmit={this.props.addBookInfo}>
               <label>
                 Title
                 <input
@@ -84,9 +88,9 @@ class AddBook extends React.Component {
               <label>
                 Library
                 <select name="library">
-                  {this.state.allLibraries.map((libraries) => {
+                  {this.props.allLibraries.map((libraries) => {
                     return (
-                      <option key={libraries.id} value={libraries.id}>
+                      <option key={libraries.id} value={libraries.id} >
                         {libraries.name}
                       </option>
                     );
@@ -95,6 +99,7 @@ class AddBook extends React.Component {
               </label>
 
               <button>Add Book</button>
+              <p onClick={this.props.cancelAddOption}>Cancel</p>
             </form>
           </>
         )}

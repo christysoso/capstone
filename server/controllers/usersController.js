@@ -4,11 +4,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 exports.addUsers = (req, res) => {
-  // const password = req.body.password;
-  // const hash = bcrypt.hashSync(password, 10);
+  const password = req.body.password;
+  const hash = bcrypt.hashSync(password, 10);
 
   knex("users")
-    .insert({ username: req.body.username, password: req.body.password})
+    .insert({ username: req.body.username, password: req.body.password })
     .then((data) => {
       res.status(201).json({ message: "You have registered", data: data });
     })
@@ -18,25 +18,32 @@ exports.addUsers = (req, res) => {
 };
 
 exports.loginUsers = (req, res) => {
+  const password = req.body.password;
   knex("users")
     .select("username", "password")
     .where({ username: req.body.username, password: req.body.password })
     .then((data) => {
       if (data.length > 0) {
+        
+        // bcrypt.compare(password, data[0].password, (error, response)=>{
+        //   if (response){
+        //     res.send(data)
+        //   }
+        // })
+
         const token = jwt.sign(
           {
             username: req.body.username,
-            loginTime: Date.now(),
           },
           "secret",
           { expiresIn: "5m" }
         );
-        res.status(201).send({ auth: true, data: data , token:token });
+        res.status(201).json({ auth: true, data: data, token: token });
       } else {
         res.send({ message: "error logging in" });
       }
     })
     .catch((err) => {
-      res.status(400).send(`Error logging in ${err}`);
+      res.status(400).send(`user does not exist ${err}`);
     });
 };

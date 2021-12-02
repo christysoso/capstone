@@ -28,10 +28,11 @@ export default function LoginPage() {
         password: passwordLog,
       })
       .then((response) => {
+         sessionStorage.setItem('clientAuthToken', response.data.token);
         if (response.data.message) {
           setLoginStatus(response.data.message);
         } else {
-          setLoginStatus(response.data.message[0]);
+          setLoginStatus(response.data.data[0].username);
         }
         console.log(response.data);
       });

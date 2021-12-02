@@ -19,6 +19,36 @@ app.use('/signup', usersRoutes);
 
 
 
+const authorize = (req, res, next) => {
+  if (!req.headers.authorization) {
+    return res.status(401).json({message: 'No token found'})
+  }
+  const authTokenArray = req.headers.authorization.split(' ');
+  if (authTokenArray[0].toLowerCase() !== 'bearer' && authTokenArray.length !== 2) {
+    return res.status(401).json({message: 'Invalid token'});
+  }
+
+  jwt.verify(authTokenArray[1], process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({message: 'The token is expired or invalid'});
+    }
+    req.payload = decoded;
+    next();
+  });
+}
+
+// app.get('/libraries', authorize, (req, res) => {
+//   res.json({
+//     tokenInfo: req.payload,
+//     sensitiveInformation: {
+//       secret: 'Old school RPGs, terrible terrible puns, Lo-fi beats to relax/study to'
+//     }
+//   });
+// })
+
+
+
+
 
 app.listen(PORT, () => {
   console.log("Running on port " + PORT);
