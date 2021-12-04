@@ -71,6 +71,22 @@ function GoogleMaps(props) {
   return (
     <div className="googleMaps">
         <Header isLibraryActive ={true} isBooksActive={false}/>
+
+        <article className="main">
+        <h1 className="main__header">Welcome to NeighborBooks!</h1>
+        <h3 className="main__info">Click on a location in the map to get started</h3>
+
+
+
+        </article>
+
+
+
+
+
+
+
+
       <Locate panTo={panTo} />
 
         <div className="container">

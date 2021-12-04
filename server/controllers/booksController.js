@@ -49,7 +49,7 @@ exports.deleteBook = (req, res) => {
 exports.bookLibraryInfo = (req, res) => {
   knex("books")
     .join("libraries", "books.library_id", "=", "libraries.id")
-    .select("books.title","books.id", "books.library_id","books.author", "libraries.address")
+    .select("books.title","books.id", "books.library_id","books.author", "libraries.address","libraries.region")
     .then((data) => {
       res.json(data);
     })

@@ -40,21 +40,25 @@ function BookListPage() {
      .map((book) => {
        return (
          <li className="bookList__container" key={book.id}>
+
+           <div className="bookList__top">
+           <div className="bookList__headers">
+             <h3 className="bookList__header">Book</h3>
+             <h4 className="bookList__info">{book.title}</h4>
+           </div>
            <div className="bookList__headers">
              <h3 className="bookList__header">Author</h3>
              <h4 className="bookList__info">{book.author}</h4>
             
            </div>
 
-           <div className="bookList__headers">
-             <h3 className="bookList__header">Book</h3>
-             <h4 className="bookList__info">{book.title}</h4>
+           
            </div>
 
 
            <div className="bookList__headers">
              <h3 className="bookList__header">Available At:</h3>
-             <h4 className="bookList__info">{book.address}</h4>
+             <h4 className="bookList__info">{book.address}, {book.region}</h4>
            </div>
 
           <div className="bookList__btn">
@@ -74,6 +78,17 @@ function BookListPage() {
     <>
       <Header isLibraryActive={false} isBookActive={true} />
 
+
+      <article className="booksPage">
+        <h2 className="booksPage__header">Looking for a book?</h2>
+        <p className="booksPage__info">It might be available at one of the libraries, use the search bar below to find out!</p>
+
+
+
+
+      </article>
+      
+
       <section className="bookSearch">
         <form className="bookSearch__search" onSubmit={searchSubmit}>
           <input className="bookSearch__search--input"
@@ -81,12 +96,15 @@ function BookListPage() {
             placeholder="Search for a book..."
             name="search"
            
+          
           />
+         
            <button className="bookSearch__search--btn"><img className="bookSearch__search--icon"src={search} alt="search button"/></button>
 
          
-         
+           <div className="bookSearch__search--bg">hello</div>
         </form>
+        
 
         <ul className="bookList">
           {bookList.length > 0 ? bookList: "No books found"}
