@@ -38,6 +38,12 @@
         border: $text-color solid 2px;
         border-radius: 20px;
         font-size: toRem(14);
+        
+    }
+
+    &__btnWrapper{
+        display:flex;
+        justify-content:flex-end;
     }
 }
 

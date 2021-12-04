@@ -1,3 +1,62 @@
 @use "../../styles/functions" as *;
 @use "../../styles/mixins" as *;
 @use "../../styles/global" as *;
+@use "../../styles/variables" as *;
+
+.addWrapper {
+  display: flex;
+  justify-content: center;
+ 
+}
+.addBook {
+  background-color: $btn-color;
+  border-radius: 20px;
+  position: absolute;
+  padding: toRem(16);
+  border: $text-color solid 2px;
+  width: 80%;
+
+  &__form{
+      padding: toRem(8);
+  }
+
+  &__form--label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: toRem(16);
+  }
+
+  &__form--input{
+      border-radius: 20px;
+      border: none;
+      padding: toRem(8);
+      margin-top: toRem(4);
+     @include text-style(toRem(13), nomral, 300);
+     font-family:"Outfit";
+     
+  }
+
+  &__title{
+      display:flex;
+      justify-content: space-between;
+      
+  }
+  
+
+  &__form--btn{
+    width: toRem(100);
+    background-color: $background-color;
+    border-radius: 20px;
+    text-align:center;
+    padding: toRem(4) toRem(8);
+    border: $text-color solid 2px;
+    border-radius: 20px;
+    font-size: toRem(14);
+
+  }
+}
+
+.text-area{
+    resize:none;
+    height: toRem(70);
+}

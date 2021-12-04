@@ -182,7 +182,7 @@ class LibrariesBooksPage extends React.Component {
         <div className="books">
           {this.state.isAddDisplayModal && (
             <AddBook
-              selectedItem={this.state.modalInfoAdd}
+              activeLibrary={this.state.activeLibrary[0]}
               cancelAddOption={this.cancelAddOption}
               allLibraries={this.state.allLibraries}
               addBookInfo={this.addBookInfo}
@@ -197,8 +197,9 @@ class LibrariesBooksPage extends React.Component {
             />
           )}
 
-          <h1 className="books__header">Book List</h1>
-          <p onClick={this.updateAddOption}>Add book</p>
+            <div className="books__header--wrapper">
+          <h1 className="books__header--title">Book List</h1><p className="books__header--add"onClick={this.updateAddOption}>+ Add Book</p>
+          </div>
 
           {this.state.bookList.map((book) => {
             return (

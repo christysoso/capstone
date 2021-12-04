@@ -1,6 +1,7 @@
 import React from "react";
 import "./AddBook.scss";
 import axios from "axios";
+import x from "../../Assets/Icons/close_black_24dp.svg";
 
 class AddBook extends React.Component {
 //   state = {
@@ -55,42 +56,48 @@ class AddBook extends React.Component {
    
     
     return (
-      <section>
+      <div className="addWrapper">
+      <section className="addBook">
         {this.props.allLibraries && (
           <>
-            <form onSubmit={this.props.addBookInfo}>
-              <label>
+           <h2 className="addBook__title">Add a book? <img onClick={this.props.cancelAddOption} className="close" src={x} alt="close"/></h2>
+            <form className="addBook__form" onSubmit={this.props.addBookInfo}>
+             
+              <label className="addBook__form--label">
                 Title
-                <input
+                <input className="addBook__form--input"
                   type="text"
                   name="title"
                   placeholder="Book Title.."
+                  required
                 ></input>
               </label>
 
-              <label>
+              <label className="addBook__form--label">
                 Author
-                <input
+                <input className="addBook__form--input"
                   type="text"
                   name="author"
                   placeholder="Book Author.."
+                  required
                 ></input>
               </label>
-              <label>
+              <label className="addBook__form--label">
                 Comment
-                <input
+                <textarea className="addBook__form--input text-area"
                   type="text"
                   name="comment"
                   placeholder="Why do you want to share.."
-                ></input>
+                  required
+                ></textarea>
               </label>
 
-              <label>
+              <label className="addBook__form--label">
                 Library
-                <select name="library">
+                <select className="addBook__form--input" name="library" defaultValue={this.props.activeLibrary.id} required>
                   {this.props.allLibraries.map((libraries) => {
                     return (
-                      <option key={libraries.id} value={libraries.id} >
+                      <option  key={libraries.id} value={libraries.id} >
                         {libraries.name}
                       </option>
                     );
@@ -98,12 +105,13 @@ class AddBook extends React.Component {
                 </select>
               </label>
 
-              <button>Add Book</button>
-              <p onClick={this.props.cancelAddOption}>Cancel</p>
+              <button className="addBook__form--btn">+ Add Book</button>
+             
             </form>
           </>
         )}
       </section>
+      </div>
     );
   }
 }

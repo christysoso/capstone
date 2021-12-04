@@ -1,3 +1,104 @@
 @use "../../styles/functions" as *;
 @use "../../styles/mixins" as *;
 @use "../../styles/global" as *;
+@use "../../styles/variables" as *;
+
+
+.bookSearch{
+   
+  
+    &__search{
+        margin: toRem(16);
+        display:flex;
+        border: 1px inset $sub-text-color;
+        border-radius: 20px;
+        width: toRem(220);
+        justify-content:space-between;
+        width: 70%;       
+        
+    }
+
+    &__search--icon{
+        margin-right: toRem(8);
+       
+    }
+
+    &__search--btn{
+        // border: solid $text-color 2px;
+        // background: $btn-color2;
+        // border-radius: 20px;
+        // display:flex;
+        // align-items:center;
+        // width: toRem(100);
+      
+        // padding: toRem(4) toRem(8);
+     
+        // font-size: toRem(14);
+
+        border: none;
+        background: none;
+       
+        
+        
+
+    }
+
+    &__search--input{
+        border-radius: 20px;
+        border: none;
+        padding: toRem(8);
+        font-family: "Outfit";
+        
+        @include text-style(toRem(16), normal, 300);
+  
+
+    }
+}
+
+.bookList{
+    margin: toRem(16);
+
+    &__container{
+        margin-bottom: toRem(16);
+        border: $text-color solid 2px;
+        border-radius: 20px;
+        padding: toRem(16);
+        
+
+    }
+    &__headers{
+
+    }
+    &__header{
+        color: $sub-text-color;
+        font-weight: 300;
+
+    }
+
+    &__info{
+       
+        @include text-style(toRem(16), normal, 300);
+        margin-bottom: toRem(8);
+
+    }
+
+    &__location{
+        background-color:$btn-color;
+        color: $text-color;
+        border-radius: 20px;
+        
+    
+   
+    text-align:center;
+    padding: toRem(4) toRem(8);
+    border: $text-color solid 2px;
+  
+    font-size: toRem(14);
+
+    }
+
+    &__btn{
+        display:flex;
+        justify-content:flex-end;
+    }
+}

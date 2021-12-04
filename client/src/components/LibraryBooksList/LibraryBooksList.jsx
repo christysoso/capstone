@@ -26,7 +26,7 @@ function LibraryBooksList(props) {
         </div>
 
 
-
+      <div className="books__btnWrapper">
         <p className="books__delete"
           onClick={() => {
             props.updateDeleteOption(true, props.book);
@@ -34,6 +34,7 @@ function LibraryBooksList(props) {
         >
           Take Book
         </p>
+        </div>
       </li>
     </>
   );

@@ -17,6 +17,35 @@ exports.addUsers = (req, res) => {
     });
 };
 
+
+
+//middleware
+const authorize = (req, res, next) => {
+  if (!req.headers.authorization) {
+    return res.status(401).json({message: 'No token found'})
+  }
+  const authTokenArray = req.headers.authorization.split(' ');
+  if (authTokenArray[0].toLowerCase() !== 'bearer' && authTokenArray.length !== 2) {
+    return res.status(401).json({message: 'Invalid token'});
+  }
+
+  jwt.verify(authTokenArray[1], "secret", (err, decoded) => {
+    if (err) {
+      return res.status(401).json({message: 'The token is expired or invalid'});
+    }
+    req.payload = decoded;
+    next();
+  });
+}
+
+
+
+
+
+
+
+
+
 exports.loginUsers = (req, res) => {
   const password = req.body.password;
   knex("users")
@@ -24,12 +53,6 @@ exports.loginUsers = (req, res) => {
     .where({ username: req.body.username, password: req.body.password })
     .then((data) => {
       if (data.length > 0) {
-        
-        // bcrypt.compare(password, data[0].password, (error, response)=>{
-        //   if (response){
-        //     res.send(data)
-        //   }
-        // })
 
         const token = jwt.sign(
           {

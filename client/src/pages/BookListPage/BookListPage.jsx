@@ -3,7 +3,7 @@ import "./BookListPage.scss";
 import Header from "../../components/Header/Header";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import search from "../../Assets/Icons/search_black_24dp.svg";
 
 function BookListPage() {
   const [books, setBooks] = React.useState([]);
@@ -16,91 +16,83 @@ function BookListPage() {
     });
   }, []);
 
+    const searchSubmit = (event)=> {
+        event.preventDefault();
+        setSearchTerm(event.target.search.value);
+        
+    };
 
-//   searchSubmit = (event)=> {
-//       event.preventDefault();
-//       setSearchTerm(event.target.search.value);
-//   };
-  
 
+
+
+
+     const bookList = books
+     .filter((book) => {
+       if (searchTerm ==="") {
+         return book;
+       } else if (
+         book.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
+         book.title.toLowerCase().includes(searchTerm.toLowerCase())
+       ) {
+         return book;
+       } 
+     })
+     .map((book) => {
+       return (
+         <li className="bookList__container" key={book.id}>
+           <div className="bookList__headers">
+             <h3 className="bookList__header">Author</h3>
+             <h4 className="bookList__info">{book.author}</h4>
+            
+           </div>
+
+           <div className="bookList__headers">
+             <h3 className="bookList__header">Book</h3>
+             <h4 className="bookList__info">{book.title}</h4>
+           </div>
+
+
+           <div className="bookList__headers">
+             <h3 className="bookList__header">Available At:</h3>
+             <h4 className="bookList__info">{book.address}</h4>
+           </div>
+
+          <div className="bookList__btn">
+           <Link to={`/libraries/${book.library_id}`}>
+             <p className="bookList__location">See Location</p>
+           </Link>
+           </div>
+         </li>
+
+
+       )
+     })
    
-
-
-  //   state = {
-  //     allBooks: [],
-  //     allLibraries: [],
-  //   };
-
-  //   componentDidMount() {
-  //     axios
-  //       .get(`http://localhost:5050/books`)
-  //       .then((response) => {
-  //         this.setState({
-  //           allBooks: response.data,
-  //         });
-  //         console.log(response.data.map((id) => id.library_id));
-  //         return response.data.map((id) => id.library_id);
-  //       })
-  //       .then((res) => {
-  //         axios.get(`http://localhost:5050/libraries/`).then((res) => {
-  //           this.setState({
-  //             allLibraries: res.data,
-  //           });
-  //         });
-  //       });
-  //   }
-
+    
   return (
-    <section className="books">
-        <Header isLibraryActive={false} isBookActive={true}/>
+     
+    <>
+      <Header isLibraryActive={false} isBookActive={true} />
 
-        <form>
-      <input
-        type="text"
-        placeholder="search.."
-        name="search"
-        onChange={(event) => {
-          setSearchTerm(event.target.value);
-        }}
-      ></input>
+      <section className="bookSearch">
+        <form className="bookSearch__search" onSubmit={searchSubmit}>
+          <input className="bookSearch__search--input"
+            type="text"
+            placeholder="Search for a book..."
+            name="search"
+           
+          />
+           <button className="bookSearch__search--btn"><img className="bookSearch__search--icon"src={search} alt="search button"/></button>
 
-      <button></button>
+         
+         
+        </form>
 
-</form>
-
-      <ul className="bookList">
-
-        {books
-          .filter((book) => {
-            if (searchTerm == "") {
-              return book;
-            } else if (book.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
-              book.title.toLowerCase().includes(searchTerm.toLowerCase())
-            ) { return book;
-            } 
-          })
-          .map((book) => {
-              
-            return (
-              <li className="bookList__container" key={book.id}>
-                <div className="bookList__headers">
-                  <h1 className="bookList__header">Author: {book.author}</h1>
-                  <p className="bookList__name">Book:{book.title}</p>
-                </div>
-
-                <div className="bookList__headers">
-                  <h1 className="bookList__header">Available At:</h1>
-                  <p className="bookList__name">{book.address}</p>
-                </div>
-
-                <Link to={`/libraries/${book.library_id}`}>
-                  <p className="bookList__location">See Location</p>
-                </Link>
-              </li>
-            );
-          })}
-      </ul>
-    </section>
+        <ul className="bookList">
+          {bookList.length > 0 ? bookList: "No books found"}
+        </ul>
+      </section>
+    </>
   );
 }
 

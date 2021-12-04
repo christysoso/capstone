@@ -40,18 +40,20 @@ function GoogleMaps(props) {
       .get(`http://localhost:5000/libraries`)
       .then((response) => {
         setLibraries(response.data);
-        return response.data[0].id;
-        // return response.data.map((library) => library.id);
+        
       })
       .then((response) => {
+        console.log(selectedLibrary)
         axios
-          .get(`http://localhost:5000/libraries/${response}/books`)
+          .get(`http://localhost:5000/libraries/${selectedLibrary}/books`)
           .then((response) => {
             setLibraryBooks(response.data);
             console.log(response.data);
           });
       });
   }, []);
+
+  
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -135,7 +137,7 @@ function GoogleMaps(props) {
 
 function Locate({ panTo }) {
   return (
-    <button
+    <button className="locate"
       onClick={() => {
         navigator.geolocation.getCurrentPosition(
           (position) => {

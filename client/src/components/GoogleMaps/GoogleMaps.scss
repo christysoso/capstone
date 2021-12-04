@@ -3,9 +3,19 @@
 @use "../../styles/global" as *;
 @use "../../styles/variables" as *;
 
+
+
+.locate{
+    position:absolute;
+    right: toRem(50);
+    z-index: 9;
+    top: toRem(80);
+}
 .container{
     display:flex;
     justify-content:center;
+    margin-top: toRem(16);
+    
     
 }
 
