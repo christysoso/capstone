@@ -4,6 +4,7 @@ import Header from "../../components/Header/Header";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import search from "../../Assets/Icons/search_black_24dp.svg";
+import booksImg from "../../Assets/Icons/icons8-books-48.png";
 
 function BookListPage() {
   const [books, setBooks] = React.useState([]);
@@ -80,7 +81,7 @@ function BookListPage() {
 
 
       <article className="booksPage">
-        <h2 className="booksPage__header">Looking for a book?</h2>
+        <h2 className="booksPage__header">Looking for a book?<img className="booksPage__icon"src={booksImg} alt="books icon" /></h2>
         <p className="booksPage__info">It might be available at one of the libraries, use the search bar below to find out!</p>
 
 

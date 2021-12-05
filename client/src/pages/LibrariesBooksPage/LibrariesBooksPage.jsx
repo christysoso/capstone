@@ -8,6 +8,9 @@ import DeleteBook from "../../components/DeleteBook/DeleteBooks";
 import address from "../../Assets/Icons/icons8-address-48.png";
 import GoogleMapsSingle from "../../components/GoogleMapsSingle/GoogleMapsSingle";
 import AddBook from "../../components/AddBook/AddBook";
+import arrow from "../../Assets/Icons/arrow_back_white_24dp.svg";
+import { Link } from "react-router-dom";
+
 
 class LibrariesBooksPage extends React.Component {
   state = {
@@ -81,8 +84,8 @@ class LibrariesBooksPage extends React.Component {
       .then((response) => {
         axios.get(`http://localhost:5000/libraries/${libraryId}/books`)
       .then((result) => {
-        console.log(result);
-        this.setState({ bookList: result.data, isAddDisplayModal: false });
+        this.setState({ bookList: result.data, isAddDisplayModal: false })
+        return alert("Thanks for sharing a book!");
       })})
       .catch((error) => {
         console.log(error);
@@ -147,14 +150,16 @@ class LibrariesBooksPage extends React.Component {
 
         {this.state.activeLibrary && (
           <>
-            <GoogleMapsSingle activeLibrary={this.state.activeLibrary[0]} />
-            <article className="library">
-              <div className="library__header">
-                <h1 className="library__header--title">Welcome to</h1>
+          <div className="library__header">
+                <h1 className="library__header--title"><Link to="/libraries"><img className="library__header--arrow" src={arrow} alt="arrow back"/> </Link>Welcome to</h1>
                 <h2 className="library__header--info">
                   {this.state.activeLibrary[0].name}
                 </h2>
               </div>
+
+            <GoogleMapsSingle activeLibrary={this.state.activeLibrary[0]} />
+            <article className="library">
+              
 
               <div className="library__info">
                 <div className="library__info--header">

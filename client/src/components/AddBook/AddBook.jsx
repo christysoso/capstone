@@ -4,54 +4,7 @@ import axios from "axios";
 import x from "../../Assets/Icons/close_black_24dp.svg";
 
 class AddBook extends React.Component {
-//   state = {
-//     allLibraries: null,
-//     activeBooks: null,
-//   };
 
-//   addBookInfo = (e) => {
-//     e.preventDefault();
-
-//     const form = e.target;
-//     const title = form.title.value;
-//     const author = form.author.value;
-//     const comment = form.comment.value;
-//     const library = this.state.allLibraries.find(
-//       (libraries) => Number(form.library.value) === libraries.id
-//     );
-//         console.log(library);
-        
-//     axios
-//       .post(`http://localhost:5000/books`, {
-//         title: title,
-//         author: author,
-//         comment: comment,
-//         library_id: Number(library.id)
-//       })
-//       .then((response) => {
-//           this.SetState({
-//             bookList:response.data
-//           })
-        
-//       })
-//       .catch((error)=>{
-//           console.log(error);
-//       });
-//   };
-
-//   componentDidMount() {
-//     axios
-//       .get(`http://localhost:5000/libraries`)
-//       .then((response) => {
-//         this.setState({
-//           allLibraries: response.data,
-//         });
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   }
- 
   render() {
    
     

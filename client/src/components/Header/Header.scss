@@ -6,6 +6,7 @@
 
 .header{
     background-color: $background-color;
+ 
     position: sticky;
     top:0;
     z-index: 10;
@@ -13,34 +14,67 @@
     
     
     &__logo{
+        display:flex;
+        align-content: center;
+        justify-content: center;
+        margin-bottom: toRem(16);
+        padding-top: toRem(16);
+        
+       
+
+        
 
     }
 
+    &__logo--icon{
+        width: toRem(32);
+        margin-right: toRem(4);
+       
+       
+        
+        
+        
+    }
+
     &__logo--name{
+        font-size: toRem(32);
+        
+       
 
     }
 
     &__left{
+        background-color: $btn-color;
+        border-radius: 20px 20px  0 0;
         
     }
 
     &__left--library-active{
         background-color:white;
-        border-radius: 10px 10px  0 0;
+        border-radius: 20px 20px  0 0;
     }
 
     &__right{
+        background-color: $btn-color;
+        border-radius: 20px 20px  0 0;
+        
         
 
     }
 
     &__right--book-active{
         background-color:white;
-        border-radius: 10px 10px  0 0;
+        border-radius: 20px 20px  0 0;
+        
     }
 
     &__tab{
-        padding: toRem(4) toRem(16);
+        padding: toRem(4) toRem(32);
+        width: toRem(150);
+        text-align:center;
+       
+       
+        
 
     }
 
@@ -51,3 +85,8 @@
 
 
 }
+
+.link{
+    color: $text-color;
+}
+

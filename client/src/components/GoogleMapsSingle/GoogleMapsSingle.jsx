@@ -8,6 +8,7 @@ import {
 } from "@react-google-maps/api";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import locate from "../../Assets/Icons/icons8-globe-48.png";
 
 const mapContainerStyle = {
   width: "90vw",
@@ -30,27 +31,9 @@ function GoogleMapsSingle (props) {
       googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
     });
   
-    // const [libraries, setLibraries] = React.useState([]);
+    
     const [selectedLibrary, setSelectedLibrary] = React.useState(null);
-    // const [libraryBooks, setLibraryBooks] = React.useState([]);
   
-    // React.useEffect(() => {
-    //   axios
-    //     .get(`http://localhost:5000/libraries`)
-    //     .then((response) => {
-    //       setLibraries(response.data);
-    //       return response.data[0].id;
-    //       // return response.data.map((library) => library.id);
-    //     })
-    //     .then((response) => {
-    //       axios
-    //         .get(`http://localhost:5000/libraries/${response}/books`)
-    //         .then((response) => {
-    //           setLibraryBooks(response.data);
-    //           console.log(response.data);
-    //         });
-    //     });
-    // }, []);
   
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
@@ -112,7 +95,8 @@ function GoogleMapsSingle (props) {
   
   function Locate({ panTo }) {
     return (
-      <button
+      <div className="locateWrap">
+      <button className="singleLocate"
         onClick={() => {
           navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -126,8 +110,9 @@ function GoogleMapsSingle (props) {
           );
         }}
       >
-        Locate
+        <img  className="panImg"src={locate} alt="locate button"/>
       </button>
+      </div>
     );
   }
   export default GoogleMapsSingle;

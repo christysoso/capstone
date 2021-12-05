@@ -4,3 +4,24 @@
 @use "../../styles/variables" as *;
 
 
+.singleLocate{
+    background: none;
+    border:none;
+    position:relative;
+    top: toRem(80);
+    z-index:9;
+    cursor:pointer;
+
+
+
+}
+
+.locateWrap{
+    margin: 0 toRem(32);
+    display:flex;
+    justify-content:flex-end;
+}
+
+.panImg{
+    width: toRem(32);
+}
