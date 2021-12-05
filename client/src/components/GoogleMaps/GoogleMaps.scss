@@ -6,10 +6,10 @@
 
 
 .locate{
-    position:absolute;
-    right: toRem(50);
-    z-index: 9;
-    top: toRem(80);
+    // position:absolute;
+    // right: toRem(50);
+    // z-index: 9;
+    // top: toRem(80);
 }
 .container{
     display:flex;
@@ -19,12 +19,18 @@
     
 }
 
-.container2{
-    margin:toRem(16);
-}
+
 
 .libraries{
+   
 
+    &__container{
+        margin:toRem(16);
+        border: solid 2px $text-color;
+        border-radius: 20px;
+        padding: toRem(24);
+        margin: toRem(24);
+    }
 
     &__name{
         
@@ -35,6 +41,11 @@
     }
 
     &__headers{
+
+    }
+
+    &__header{
+        color: $sub-text-color;
 
     }
 

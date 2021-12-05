@@ -11,7 +11,6 @@ import AddBook from "../../components/AddBook/AddBook";
 import arrow from "../../Assets/Icons/arrow_back_white_24dp.svg";
 import { Link } from "react-router-dom";
 
-
 class LibrariesBooksPage extends React.Component {
   state = {
     activeLibrary: null,
@@ -25,11 +24,13 @@ class LibrariesBooksPage extends React.Component {
   };
 
   updateDeleteOption = (status, book) => {
+    window.scrollTo(0, 500);
     this.setState({ isDeleteDisplayModal: status, modalInfoDelete: book });
   };
 
   updateAddOption = (status, library) => {
-    this.setState({ isAddDisplayModal: status, modalInfoAdd: library });
+    this.setState({ isAddDisplayModal: status, modalInfoAdd: library })
+   
   };
 
   cancelDeleteOption = () => {
@@ -70,9 +71,8 @@ class LibrariesBooksPage extends React.Component {
       (libraries) => Number(form.library.value) === libraries.id
     );
 
-    
     const libraryId = this.props.match.params.id;
-        console.log(libraryId);
+    console.log(libraryId);
 
     axios
       .post(`http://localhost:5000/books`, {
@@ -82,11 +82,14 @@ class LibrariesBooksPage extends React.Component {
         library_id: Number(library.id),
       })
       .then((response) => {
-        axios.get(`http://localhost:5000/libraries/${libraryId}/books`)
-      .then((result) => {
-        this.setState({ bookList: result.data, isAddDisplayModal: false })
-        return alert("Thanks for sharing a book!");
-      })})
+        axios
+          .get(`http://localhost:5000/libraries/${libraryId}/books`)
+          .then((result) => {
+            this.setState({ bookList: result.data, isAddDisplayModal: false });
+            return alert("Thanks for sharing a book!");
+          });
+           window.scrollTo({ left: 0, top: 9999, behavior: "smooth" })
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -150,17 +153,24 @@ class LibrariesBooksPage extends React.Component {
 
         {this.state.activeLibrary && (
           <>
-          <div className="library__header">
-                <h1 className="library__header--title"><Link to="/libraries"><img className="library__header--arrow" src={arrow} alt="arrow back"/> </Link>Welcome to</h1>
-                <h2 className="library__header--info">
-                  {this.state.activeLibrary[0].name}
-                </h2>
-              </div>
+            <div className="library__header">
+              {/* <Link to="/libraries">
+                  <img
+                    className="library__header--arrow"
+                    src={arrow}
+                    alt="arrow back"
+                  />{" "}
+                </Link> */}
+              <h1 className="library__header--title">
+                Welcome to {this.state.activeLibrary[0].name}
+              </h1>
+              {/* <h2 className="library__header--info">
+                
+              </h2> */}
+            </div>
 
             <GoogleMapsSingle activeLibrary={this.state.activeLibrary[0]} />
             <article className="library">
-              
-
               <div className="library__info">
                 <div className="library__info--header">
                   <h3 className="library__info--about">
@@ -202,8 +212,11 @@ class LibrariesBooksPage extends React.Component {
             />
           )}
 
-            <div className="books__header--wrapper">
-          <h1 className="books__header--title">Book List</h1><p className="books__header--add"onClick={this.updateAddOption}>+ Add Book</p>
+          <div className="books__header--wrapper">
+            <h1 className="books__header--title">Book List</h1>
+            <p className="books__header--add" onClick={this.updateAddOption}>
+              + Add Book
+            </p>
           </div>
 
           {this.state.bookList.map((book) => {

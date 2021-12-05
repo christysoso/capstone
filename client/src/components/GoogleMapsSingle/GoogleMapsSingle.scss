@@ -7,8 +7,9 @@
 .singleLocate{
     background: none;
     border:none;
-    position:relative;
-    top: toRem(80);
+    position:absolute;
+    top: toRem(198);
+    right: toRem(30);
     z-index:9;
     cursor:pointer;
 
@@ -17,9 +18,9 @@
 }
 
 .locateWrap{
-    margin: 0 toRem(32);
-    display:flex;
-    justify-content:flex-end;
+    // margin: 0 toRem(32);
+    // display:flex;
+    // justify-content:flex-end;
 }
 
 .panImg{

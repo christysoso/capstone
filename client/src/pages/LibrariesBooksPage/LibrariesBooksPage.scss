@@ -6,6 +6,10 @@
 .library{
     margin: toRem(16);
     &__header{
+        // display:flex;
+        // justify-content:center;
+        text-align:center;
+
 
     }
 
@@ -17,6 +21,11 @@
     }
 
     &__header--title{
+        @include text-style(toRem(24), normal, 400);
+        margin: toRem(16);
+        text-align:center;
+        display:flex;
+        justify-content:center;
 
     }
 

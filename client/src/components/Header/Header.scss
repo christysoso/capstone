@@ -57,6 +57,7 @@
     &__right{
         background-color: $btn-color;
         border-radius: 20px 20px  0 0;
+       
         
         
 
@@ -90,3 +91,6 @@
     color: $text-color;
 }
 
+.header__tab:hover{
+    text-decoration: underline 2px;
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../Header/Header";
+import libraryIcon from "../../Assets/Icons/icons8-book-shelf-48.png";
 import "./GoogleMaps.scss";
 import {
   GoogleMap,
@@ -13,8 +14,7 @@ import { Link } from "react-router-dom";
 const mapContainerStyle = {
   width: "90vw",
   height: "50vh",
-  borderRadius: "20px"
-
+  borderRadius: "20px",
 };
 
 const center = {
@@ -40,10 +40,9 @@ function GoogleMaps(props) {
       .get(`http://localhost:5000/libraries`)
       .then((response) => {
         setLibraries(response.data);
-        
       })
       .then((response) => {
-        console.log(selectedLibrary)
+        console.log(selectedLibrary);
         axios
           .get(`http://localhost:5000/libraries/${selectedLibrary}/books`)
           .then((response) => {
@@ -52,8 +51,6 @@ function GoogleMaps(props) {
           });
       });
   }, []);
-
-  
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -70,80 +67,87 @@ function GoogleMaps(props) {
 
   return (
     <div className="googleMaps">
-        <Header isLibraryActive ={true} isBooksActive={false}/>
+      <Header isLibraryActive={true} isBooksActive={false} />
 
-        <article className="main">
+      <article className="main">
         <h1 className="main__header">Welcome to NeighborBooks!</h1>
-        <h3 className="main__info">Click on a location in the map to get started</h3>
-
-
-
-        </article>
-
-
-
-
-
-
-
+        <h3 className="main__info">
+          Click on a bookshelf on the map to get started
+        </h3>
+      </article>
 
       <Locate panTo={panTo} />
 
-        <div className="container">
-      <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        zoom={11}
-        center={center}
-        options={options}
-        onLoad={onMapLoad}
-      >
-        {libraries.map((library) => (
-          <Marker
-            key={library.id}
-            position={{ lat: library.lat, lng: library.lng }}
-            onClick={() => {
-              setSelectedLibrary(library);
-            }}
-          />
-        ))}
+      <div className="container">
+        <GoogleMap
+          mapContainerStyle={mapContainerStyle}
+          zoom={11}
+          center={center}
+          options={options}
+          onLoad={onMapLoad}
+        >
+          {libraries.map((library) => (
+            <Marker
+              icon={{
+                url: libraryIcon,
+                scaledSize: new window.google.maps.Size(30, 30),
+              }}
+              key={library.id}
+              position={{ lat: library.lat, lng: library.lng }}
+              onClick={() => {
+                setSelectedLibrary(library);
+              }}
+            />
+          ))}
 
-        {selectedLibrary && (
-          <InfoWindow
-            position={{ lat: selectedLibrary.lat, lng: selectedLibrary.lng }}
-            onCloseClick={() => {
-              setSelectedLibrary(null);
-            }}
-          >
-            <div>
-              <h4>{selectedLibrary.name}</h4>
-              <p>{selectedLibrary.address}</p>
-              <p>{selectedLibrary.region}</p>
-            </div>
-          </InfoWindow>
-        )}
-      </GoogleMap>
+          {selectedLibrary && (
+            <InfoWindow
+              position={{ lat: selectedLibrary.lat, lng: selectedLibrary.lng }}
+              onCloseClick={() => {
+                setSelectedLibrary(null);
+              }}
+            >
+              <div>
+                <h4>{selectedLibrary.name}</h4>
+                <p>{selectedLibrary.address}</p>
+                <p>{selectedLibrary.region}</p>
+              </div>
+            </InfoWindow>
+          )}
+        </GoogleMap>
       </div>
 
       {selectedLibrary && (
         <section className="libraries">
-            <div className="container2">
-          <h1 className="libraries__name">{selectedLibrary.name}</h1>
+          <div className="libraries__container">
+            
 
-          <div className="libraries__info">
+        
+
+
+
+            <div className="libraries__info">
+
             <div className="libraries__headers">
-              <h2 className="libraries__header">Address:</h2>
-              <p className="libraries__details">{selectedLibrary.address}</p>
-            </div>
+                <h2 className="libraries__header">Library</h2>
+                <p className="libraries__details">{selectedLibrary.name}</p>
+              </div>
 
-            <div className="libraries__headers">
-              <h2 className="libraries__header">Books Available:</h2>
-              <p className="libraries__details">{libraryBooks.length}</p>
-            </div>
 
-            <Link to={`/libraries/${selectedLibrary.id}`}>
-              <p className="libraries__books">See Books</p>
-            </Link>
-          </div>
+              <div className="libraries__headers">
+                <h2 className="libraries__header">Address</h2>
+                <p className="libraries__details">{selectedLibrary.address}, {selectedLibrary.region}</p>
+              </div>
+
+              <div className="libraries__headers">
+                <h2 className="libraries__header">Books Available</h2>
+                <p className="libraries__details">{libraryBooks.length}</p>
+              </div>
+
+              <Link to={`/libraries/${selectedLibrary.id}`}>
+                <p className="libraries__books">See Books</p>
+              </Link>
+            </div>
           </div>
         </section>
       )}
@@ -153,7 +157,8 @@ function GoogleMaps(props) {
 
 function Locate({ panTo }) {
   return (
-    <button className="locate"
+    <button
+      className="locate"
       onClick={() => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
