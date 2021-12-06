@@ -82,7 +82,7 @@ function BookListPage() {
 
       <article className="booksPage">
         <h2 className="booksPage__header">Looking for a book?<img className="booksPage__icon"src={booksImg} alt="books icon" /></h2>
-        <p className="booksPage__info">It might be available at one of the libraries, use the search bar below to find out!</p>
+        <p className="booksPage__info">It might be available at one of the libraries, use the search bar below to look for a title or by author to find out!</p>
 
 
 
@@ -105,9 +105,12 @@ function BookListPage() {
          
            <div className="bookSearch__search--bg">hello</div>
         </form>
+
+
         
 
         <ul className="bookList">
+          <h1 className="bookList__title">All Books ({bookList.length})</h1>
           {bookList.length > 0 ? bookList: "No books found"}
         </ul>
       </section>

@@ -81,6 +81,10 @@
 .bookList {
   margin: toRem(16);
 
+  &__title{
+      margin-bottom: toRem(16);
+  }
+
   &__container {
     margin-bottom: toRem(16);
     border: $text-color solid 2px;
@@ -132,4 +136,8 @@
     justify-content: space-between;
     margin-bottom: toRem(8);
   }
+}
+
+.bookList__container:hover{
+    background-color: $container-hover;
 }

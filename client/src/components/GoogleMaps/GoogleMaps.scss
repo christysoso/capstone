@@ -19,6 +19,20 @@
     
 }
 
+.main{
+    margin:toRem(16);
+    &__header{
+        margin-bottom: toRem(16);
+        
+
+    }
+
+    &__info{
+        @include text-style(toRem(16), normal, 400);
+
+    }
+}
+
 
 
 .libraries{
@@ -30,6 +44,7 @@
         border-radius: 20px;
         padding: toRem(24);
         margin: toRem(24);
+        background-color:$btn-color2;
     }
 
     &__name{
@@ -37,24 +52,50 @@
     }
     
     &__info{
+        // display:flex;
+        
         
     }
 
     &__headers{
+        margin-bottom: toRem(16);
 
     }
 
     &__header{
-        color: $sub-text-color;
+        // color: $sub-text-color;
+        // font-weight: 300;
 
     }
 
     &__details{
+        @include text-style(toRem(16), normal, 400);
 
 
     }
 
     &__books{
+        background-color: $btn-color;
+        border-radius: 20px;
+        border: solid $text-color 2px;
+        width: toRem(100);
+        
+        text-align:center;
+        padding: toRem(4) toRem(8);
+       
+        
+        font-size: toRem(14);
+        cursor:pointer;
+        
 
     }
+
+    &__btnWrapper{
+        display: flex;
+        justify-content:flex-end;
+    }
+}
+
+.libraries__books:hover{
+    background-color: $btn-hover-yellow;
 }

@@ -33,7 +33,6 @@ function GoogleMaps(props) {
 
   const [libraries, setLibraries] = React.useState([]);
   const [selectedLibrary, setSelectedLibrary] = React.useState(null);
-  const [libraryBooks, setLibraryBooks] = React.useState([]);
 
   React.useEffect(() => {
     axios
@@ -41,14 +40,8 @@ function GoogleMaps(props) {
       .then((response) => {
         setLibraries(response.data);
       })
-      .then((response) => {
-        console.log(selectedLibrary);
-        axios
-          .get(`http://localhost:5000/libraries/${selectedLibrary}/books`)
-          .then((response) => {
-            setLibraryBooks(response.data);
-            console.log(response.data);
-          });
+      .catch((error) => {
+        console.log(error);
       });
   }, []);
 
@@ -109,8 +102,7 @@ function GoogleMaps(props) {
             >
               <div>
                 <h4>{selectedLibrary.name}</h4>
-                <p>{selectedLibrary.address}</p>
-                <p>{selectedLibrary.region}</p>
+              
               </div>
             </InfoWindow>
           )}
@@ -120,33 +112,24 @@ function GoogleMaps(props) {
       {selectedLibrary && (
         <section className="libraries">
           <div className="libraries__container">
-            
-
-        
-
-
-
             <div className="libraries__info">
-
-            <div className="libraries__headers">
+              <div className="libraries__headers">
                 <h2 className="libraries__header">Library</h2>
                 <p className="libraries__details">{selectedLibrary.name}</p>
               </div>
 
-
               <div className="libraries__headers">
                 <h2 className="libraries__header">Address</h2>
-                <p className="libraries__details">{selectedLibrary.address}, {selectedLibrary.region}</p>
+                <p className="libraries__details">
+                  {selectedLibrary.address}, {selectedLibrary.region}
+                </p>
               </div>
 
-              <div className="libraries__headers">
-                <h2 className="libraries__header">Books Available</h2>
-                <p className="libraries__details">{libraryBooks.length}</p>
+              <div className="libraries__btnWrapper">
+                <Link className="link" to={`/libraries/${selectedLibrary.id}`}>
+                  <p className="libraries__books">See Books</p>
+                </Link>
               </div>
-
-              <Link to={`/libraries/${selectedLibrary.id}`}>
-                <p className="libraries__books">See Books</p>
-              </Link>
             </div>
           </div>
         </section>

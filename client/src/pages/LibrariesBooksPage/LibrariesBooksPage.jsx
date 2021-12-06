@@ -213,7 +213,7 @@ class LibrariesBooksPage extends React.Component {
           )}
 
           <div className="books__header--wrapper">
-            <h1 className="books__header--title">Book List</h1>
+            <h1 className="books__header--title">Book List ({this.state.bookList.length})</h1>
             <p className="books__header--add" onClick={this.updateAddOption}>
               + Add Book
             </p>
