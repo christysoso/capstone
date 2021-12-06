@@ -3,68 +3,50 @@
 @use "../../styles/global" as *;
 @use "../../styles/variables" as *;
 
-.library{
+.library {
+  margin: toRem(16);
+  &__header {
+    text-align: center;
+  }
+
+  &__header--arrow {
+    background: $btn-color2;
+    border-radius: 50%;
+    border: solid 2px $text-color;
+  }
+
+  &__header--title {
+    @include text-style(toRem(24), normal, 400);
     margin: toRem(16);
-    &__header{
-        // display:flex;
-        // justify-content:center;
-        text-align:center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
 
+  &__header--info {
+    margin-bottom: toRem(16);
+  }
 
-    }
+  &__info {
+    border: black solid 2px;
+    border-radius: 20px;
+    padding: toRem(16);
+  }
 
-    &__header--arrow{
-        background: $btn-color2;
-        border-radius: 50%;
-        border:solid 2px $text-color;
-        
-    }
+  &__info--header {
+    margin-bottom: toRem(16);
+  }
 
-    &__header--title{
-        @include text-style(toRem(24), normal, 400);
-        margin: toRem(16);
-        text-align:center;
-        display:flex;
-        justify-content:center;
+  &__info--about {
+    color: $sub-text-color;
+    display: flex;
+  }
 
-    }
-
-    &__header--info{
-        margin-bottom: toRem(16);
-       
-
-    }
-
-    &__info{
-        border:black solid 2px;
-        border-radius: 20px;
-        padding: toRem(16);
-    }
-
-
-    &__info--header{
-        margin-bottom: toRem(16);
-
-    }
-
-    &__info--about{
-        color:$sub-text-color;
-        display:flex;
-       
-        
-        
-       
-
-    }
-
-    &__info--detail{
-        @include text-style(toRem(16), normal, 300);
-        
-
-    }
+  &__info--detail {
+    @include text-style(toRem(16), normal, 300);
+  }
 }
 
-.icon{
-    height: toRem(30);
-    
+.icon {
+  height: toRem(30);
 }

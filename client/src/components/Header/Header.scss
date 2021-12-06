@@ -3,94 +3,66 @@
 @use "../../styles/global" as *;
 @use "../../styles/variables" as *;
 
+.header {
+  background-color: $background-color;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: 100%;
 
-.header{
-    background-color: $background-color;
- 
-    position: sticky;
-    top:0;
-    z-index: 10;
-    width: 100%;
-    
-    
-    &__logo{
-        display:flex;
-        align-content: center;
-        justify-content: center;
-        margin-bottom: toRem(16);
-        padding-top: toRem(16);
-        
-       
+  &__logo {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: toRem(16);
+    padding-top: toRem(16);
+  }
 
-        
+  &__logo--icon {
+    width: toRem(32);
+    margin-right: toRem(4);
+  }
 
-    }
+  &__logo--name {
+    font-size: toRem(32);
+  }
 
-    &__logo--icon{
-        width: toRem(32);
-        margin-right: toRem(4);
-       
-       
-        
-        
-        
-    }
+  &__left {
+    background-color: $btn-color;
+    border-radius: 20px 20px 0 0;
+  }
 
-    &__logo--name{
-        font-size: toRem(32);
-        
-       
+  &__left--library-active {
+    background-color: white;
+    border-radius: 20px 20px 0 0;
+  }
 
-    }
+  &__right {
+    background-color: $btn-color;
+    border-radius: 20px 20px 0 0;
+  }
 
-    &__left{
-        background-color: $btn-color;
-        border-radius: 20px 20px  0 0;
-        
-    }
+  &__right--book-active {
+    background-color: white;
+    border-radius: 20px 20px 0 0;
+  }
 
-    &__left--library-active{
-        background-color:white;
-        border-radius: 20px 20px  0 0;
-    }
+  &__tab {
+    padding: toRem(4) toRem(32);
+    width: toRem(150);
+    text-align: center;
+  }
 
-    &__right{
-        background-color: $btn-color;
-        border-radius: 20px 20px  0 0;
-       
-        
-        
-
-    }
-
-    &__right--book-active{
-        background-color:white;
-        border-radius: 20px 20px  0 0;
-        
-    }
-
-    &__tab{
-        padding: toRem(4) toRem(32);
-        width: toRem(150);
-        text-align:center;
-       
-       
-        
-
-    }
-
-    &__container{
-        display:flex;
-        justify-content:space-evenly;
-    }
-
-
+  &__container {
+    display: flex;
+    justify-content: space-evenly;
+  }
 }
 
-.link{
-    color: $text-color;
+.link {
+  color: $text-color;
 }
 
-.header__tab:hover{
-    text-decoration: underline 2px;
+.header__tab:hover {
+  text-decoration: underline 2px;
 }

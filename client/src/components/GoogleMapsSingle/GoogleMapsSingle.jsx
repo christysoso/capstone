@@ -7,8 +7,6 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-import axios from "axios";
-import { Link } from "react-router-dom";
 import locate from "../../Assets/Icons/icons8-globe-48.png";
 
 const mapContainerStyle = {
@@ -45,9 +43,8 @@ function GoogleMapsSingle(props) {
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "loading maps";
-  console.log(props.activeLibrary);
+
   return (
-    // <div className="googleMaps">
     <>
       <Locate panTo={panTo} />
 
@@ -96,7 +93,6 @@ function GoogleMapsSingle(props) {
 
 function Locate({ panTo }) {
   return (
-    // <div className="locateWrap">
     <button
       className="singleLocate"
       onClick={() => {
@@ -114,7 +110,6 @@ function Locate({ panTo }) {
     >
       <img className="panImg" src={locate} alt="locate button" />
     </button>
-    // </div>
   );
 }
 export default GoogleMapsSingle;

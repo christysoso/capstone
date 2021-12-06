@@ -3,61 +3,53 @@
 @use "../../styles/global" as *;
 @use "../../styles/variables" as *;
 
+.deleteWrapper {
+  display: flex;
+  justify-content: center;
+}
 
-.delete{
-    position:absolute;
-    left: toRem(26);
-    background: $background-color;
-    border-radius: 20px;
+.delete {
+  position: absolute;
+  background: $background-color;
+  border-radius: 20px;
+  padding: toRem(16);
+  border: $text-color solid 2px;
+  width: toRem(320);
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info {
     padding: toRem(16);
+  }
+
+  &__button {
+    width: toRem(100);
+    background-color: $btn-color;
+    border-radius: 20px;
+    text-align: center;
+    padding: toRem(4) toRem(8);
     border: $text-color solid 2px;
-    width: toRem(320);
 
-
-    &__container{
-
-    }
-
-    &__title{
-        display:flex;
-        justify-content:space-between;
-        
-    }
-
-    &__info{
-        padding: toRem(16);
-    }
-
-    &__button{
-        
-        width: toRem(100);
-        background-color: $btn-color;
-        border-radius: 20px;
-        text-align:center;
-        padding: toRem(4) toRem(8);
-        border: $text-color solid 2px;
-        
-        font-size: toRem(14);
-        cursor:pointer;
-        
-    }
-
-    
+    font-size: toRem(14);
+    cursor: pointer;
+  }
 }
 
-.close{
-    background-color: $close;
-    border-radius: 50%;
-    padding: toRem(2);
-    border: solid $text-color 2px;
-    cursor:pointer;
-    // width: toRem(20);
+.close {
+  background-color: $close;
+  border-radius: 50%;
+  padding: toRem(2);
+  border: solid $text-color 2px;
+  cursor: pointer;
 }
 
-.close:hover{
-    background-color: $btn-hover-red;
+.close:hover {
+  background-color: $btn-hover-red;
 }
 
-.delete__button:hover{
-background-color:$btn-hover-yellow;
+.delete__button:hover {
+  background-color: $btn-hover-yellow;
 }

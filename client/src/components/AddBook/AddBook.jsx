@@ -1,24 +1,28 @@
 import React from "react";
 import "./AddBook.scss";
-import axios from "axios";
+
 import x from "../../Assets/Icons/close_black_24dp.svg";
 
-class AddBook extends React.Component {
-
-  render() {
-   
-    
-    return (
-      <div className="addWrapper">
+function AddBook(props) {
+  return (
+    <div className="addWrapper">
       <section className="addBook">
-        {this.props.allLibraries && (
+        {props.allLibraries && (
           <>
-           <h2 className="addBook__title">Add a book? <img onClick={this.props.cancelAddOption} className="close" src={x} alt="close"/></h2>
-            <form className="addBook__form" onSubmit={this.props.addBookInfo}>
-             
+            <h2 className="addBook__title">
+              Add a book?{" "}
+              <img
+                onClick={props.cancelAddOption}
+                className="close"
+                src={x}
+                alt="close"
+              />
+            </h2>
+            <form className="addBook__form" onSubmit={props.addBookInfo}>
               <label className="addBook__form--label">
                 Title
-                <input className="addBook__form--input"
+                <input
+                  className="addBook__form--input"
                   type="text"
                   name="title"
                   placeholder="Book Title.."
@@ -28,7 +32,8 @@ class AddBook extends React.Component {
 
               <label className="addBook__form--label">
                 Author
-                <input className="addBook__form--input"
+                <input
+                  className="addBook__form--input"
                   type="text"
                   name="author"
                   placeholder="Book Author.."
@@ -37,7 +42,8 @@ class AddBook extends React.Component {
               </label>
               <label className="addBook__form--label">
                 Comment
-                <textarea className="addBook__form--input text-area"
+                <textarea
+                  className="addBook__form--input text-area"
                   type="text"
                   name="comment"
                   placeholder="Why do you want to share.."
@@ -47,10 +53,15 @@ class AddBook extends React.Component {
 
               <label className="addBook__form--label">
                 Library
-                <select className="addBook__form--input" name="library" defaultValue={this.props.activeLibrary.id} required>
-                  {this.props.allLibraries.map((libraries) => {
+                <select
+                  className="addBook__form--input"
+                  name="library"
+                  defaultValue={props.activeLibrary.id}
+                  required
+                >
+                  {props.allLibraries.map((libraries) => {
                     return (
-                      <option  key={libraries.id} value={libraries.id} >
+                      <option key={libraries.id} value={libraries.id}>
                         {libraries.name}
                       </option>
                     );
@@ -59,14 +70,12 @@ class AddBook extends React.Component {
               </label>
 
               <button className="addBook__form--btn">+ Add Book</button>
-             
             </form>
           </>
         )}
       </section>
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default AddBook;

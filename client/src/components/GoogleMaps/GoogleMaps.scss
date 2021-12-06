@@ -10,7 +10,27 @@
     // right: toRem(50);
     // z-index: 9;
     // top: toRem(80);
+    background:none;
+    border:none;
+    
 }
+
+.globe{
+   position:absolute;
+   z-index: 9;
+   top: toRem(230);
+   right: toRem(30);
+   z-index:9;
+   width: toRem(32);
+   cursor:pointer;
+}
+
+.reader{
+    width: toRem(32);
+    margin: 0 toRem(4);
+}
+
+
 .container{
     display:flex;
     justify-content:center;
@@ -20,16 +40,20 @@
 }
 
 .main{
-    margin:toRem(16);
+    margin:toRem(16) toRem(16) 0 toRem(16);
+    
     &__header{
         margin-bottom: toRem(16);
-        
+        text-align: center;
+        display:flex;
+        justify-content:center;
+        align-items: center;
 
     }
 
     &__info{
         @include text-style(toRem(16), normal, 400);
-
+        text-align: center;
     }
 }
 

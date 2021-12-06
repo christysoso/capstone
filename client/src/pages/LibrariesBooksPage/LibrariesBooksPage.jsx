@@ -2,14 +2,11 @@ import React from "react";
 import "./LibrariesBooksPage.scss";
 import axios from "axios";
 import LibraryBooksList from "../../components/LibraryBooksList/LibraryBooksList";
-import GoogleMaps from "../../components/GoogleMaps/GoogleMaps";
 import Header from "../../components/Header/Header";
 import DeleteBook from "../../components/DeleteBook/DeleteBooks";
 import address from "../../Assets/Icons/icons8-address-48.png";
 import GoogleMapsSingle from "../../components/GoogleMapsSingle/GoogleMapsSingle";
 import AddBook from "../../components/AddBook/AddBook";
-import arrow from "../../Assets/Icons/arrow_back_white_24dp.svg";
-import { Link } from "react-router-dom";
 
 class LibrariesBooksPage extends React.Component {
   state = {
@@ -18,7 +15,6 @@ class LibrariesBooksPage extends React.Component {
     allLibraries: null,
     isDeleteDisplayModal: false,
     modalInfoDelete: null,
-
     isAddDisplayModal: false,
     modalInfoAdd: null,
   };
@@ -29,8 +25,7 @@ class LibrariesBooksPage extends React.Component {
   };
 
   updateAddOption = (status, library) => {
-    this.setState({ isAddDisplayModal: status, modalInfoAdd: library })
-   
+    this.setState({ isAddDisplayModal: status, modalInfoAdd: library });
   };
 
   cancelDeleteOption = () => {
@@ -48,7 +43,6 @@ class LibrariesBooksPage extends React.Component {
         return axios.get(`http://localhost:5000/libraries/${libraryID}/books`);
       })
       .then((response) => {
-        console.log(response.data);
         this.setState({
           bookList: response.data,
           isDeleteDisplayModal: false,
@@ -72,7 +66,6 @@ class LibrariesBooksPage extends React.Component {
     );
 
     const libraryId = this.props.match.params.id;
-    console.log(libraryId);
 
     axios
       .post(`http://localhost:5000/books`, {
@@ -88,18 +81,15 @@ class LibrariesBooksPage extends React.Component {
             this.setState({ bookList: result.data, isAddDisplayModal: false });
             return alert("Thanks for sharing a book!");
           });
-           window.scrollTo({ left: 0, top: 9999, behavior: "smooth" })
+        window.scrollTo({ left: 0, top: 9999, behavior: "smooth" });
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  ///test
-
   componentDidMount() {
     const libraryId = this.props.match.params.id;
-    console.log(libraryId);
 
     axios
       .get(`http://localhost:5000/libraries/${libraryId}`)
@@ -145,8 +135,6 @@ class LibrariesBooksPage extends React.Component {
   }
 
   render() {
-    //   sessionStorage.setItem("currentPage", "libraryI");
-
     return (
       <>
         <Header isLibraryActive={true} isBookActive={false} />
@@ -154,19 +142,9 @@ class LibrariesBooksPage extends React.Component {
         {this.state.activeLibrary && (
           <>
             <div className="library__header">
-              {/* <Link to="/libraries">
-                  <img
-                    className="library__header--arrow"
-                    src={arrow}
-                    alt="arrow back"
-                  />{" "}
-                </Link> */}
               <h1 className="library__header--title">
                 Welcome to {this.state.activeLibrary[0].name}
               </h1>
-              {/* <h2 className="library__header--info">
-                
-              </h2> */}
             </div>
 
             <GoogleMapsSingle activeLibrary={this.state.activeLibrary[0]} />
@@ -213,7 +191,9 @@ class LibrariesBooksPage extends React.Component {
           )}
 
           <div className="books__header--wrapper">
-            <h1 className="books__header--title">Book List ({this.state.bookList.length})</h1>
+            <h1 className="books__header--title">
+              Book List ({this.state.bookList.length})
+            </h1>
             <p className="books__header--add" onClick={this.updateAddOption}>
               + Add Book
             </p>

@@ -5,25 +5,15 @@ import {
   Redirect,
 } from "react-router-dom";
 import BookListPage from "./pages/BookListPage/BookListPage";
-import GoogleMaps from "./components/GoogleMaps/GoogleMaps";
 import LoginPage from "./components/LoginPage/LoginPage";
 import LibrariesPage from "./pages/LibrariesPage/LibrariesPage";
 import LibrariesBooksPage from "./pages/LibrariesBooksPage/LibrariesBooksPage";
 import AddBook from "./components/AddBook/AddBook";
 
 function App() {
-
-
-
-
-
-  
   return (
     <Router>
       <div className="App">
-
-
-
         <Switch>
           <Redirect exact from="/" to="/libraries" />
           <Route
@@ -43,16 +33,11 @@ function App() {
             render={(routerProps) => <LibrariesBooksPage {...routerProps} />}
           />
 
-            <Route
+          <Route
             path="/books/add"
             exact
             render={(routerProps) => <AddBook {...routerProps} />}
           />
-
-        
-
-          {/* <GoogleMaps /> */}
-          
         </Switch>
 
         {/* <LoginPage /> */}

@@ -2,6 +2,8 @@ import React from "react";
 import Header from "../Header/Header";
 import libraryIcon from "../../Assets/Icons/icons8-book-shelf-48.png";
 import "./GoogleMaps.scss";
+import globe from "../../Assets/Icons/icons8-globe-48.png";
+import reader from "../../Assets/Icons/icons8-ereader-48.png";
 import {
   GoogleMap,
   useLoadScript,
@@ -63,9 +65,13 @@ function GoogleMaps(props) {
       <Header isLibraryActive={true} isBooksActive={false} />
 
       <article className="main">
-        <h1 className="main__header">Welcome to NeighborBooks!</h1>
+        <h1 className="main__header">
+          <img className="reader" src={reader} alt="book icon" />
+          Welcome to NeighborBooks!
+          <img className="reader" src={reader} alt="book icon" />
+        </h1>
         <h3 className="main__info">
-          Click on a bookshelf on the map to get started
+          Click on a bookshelf on the map to learn more
         </h3>
       </article>
 
@@ -102,7 +108,6 @@ function GoogleMaps(props) {
             >
               <div>
                 <h4>{selectedLibrary.name}</h4>
-              
               </div>
             </InfoWindow>
           )}
@@ -155,7 +160,7 @@ function Locate({ panTo }) {
         );
       }}
     >
-      Locate
+      <img className="globe" src={globe} alt="locate button" />
     </button>
   );
 }

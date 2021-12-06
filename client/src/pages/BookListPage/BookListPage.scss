@@ -16,7 +16,6 @@
 
   &__icon {
     width: toRem(28);
-
     margin-left: toRem(4);
   }
 }
@@ -49,21 +48,10 @@
 
   &__search--icon {
     margin-right: toRem(8);
-    cursor:pointer;
+    cursor: pointer;
   }
 
   &__search--btn {
-    // border: solid $text-color 2px;
-    // background: $btn-color2;
-    // border-radius: 20px;
-    // display:flex;
-    // align-items:center;
-    // width: toRem(100);
-
-    // padding: toRem(4) toRem(8);
-
-    // font-size: toRem(14);
-
     border: none;
     background: none;
   }
@@ -73,7 +61,6 @@
     border: none;
     padding: toRem(8);
     font-family: "Outfit";
-
     @include text-style(toRem(16), normal, 300);
   }
 }
@@ -81,8 +68,8 @@
 .bookList {
   margin: toRem(16);
 
-  &__title{
-      margin-bottom: toRem(16);
+  &__title {
+    margin-bottom: toRem(16);
   }
 
   &__container {
@@ -91,8 +78,7 @@
     border-radius: 20px;
     padding: toRem(24);
   }
-  &__headers {
-  }
+
   &__header {
     color: $sub-text-color;
     font-weight: 300;
@@ -111,24 +97,17 @@
     padding: toRem(4) toRem(8);
     border: $text-color solid 2px;
     font-size: toRem(14);
-    
-   
-   
   }
-
 
   &__btn {
     display: flex;
     justify-content: flex-end;
     margin-top: toRem(20);
-    
-    
+
     :hover {
-        background-color: $btn-hover-yellow;
-        border-radius: 20px;
-        
+      background-color: $btn-hover-yellow;
+      border-radius: 20px;
     }
-     
   }
 
   &__top {
@@ -138,6 +117,6 @@
   }
 }
 
-.bookList__container:hover{
-    background-color: $container-hover;
+.bookList__container:hover {
+  background-color: $container-hover;
 }
