@@ -5,12 +5,20 @@ NeighborBooks allows users to geolocate and view book availability at free take 
 
 ## Required API
 
-Please register your own google maps api key using the google maps javascript api key
+Please register your own google maps api key using the google maps javascript api key and use this in place of the .env key
 https://developers.google.com/maps/documentation/javascript/overview
 
 ## Installation
 
-Please run NPM install in both client and server folders
+``
+cd
+client
+npm install
+
+cd
+server
+npm install
+``
 
 ## Knex/MySQL
 This project currently uses mock data from a MySql database. Please run the following in order to use see this data
