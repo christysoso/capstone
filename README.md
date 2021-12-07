@@ -10,7 +10,7 @@ https://developers.google.com/maps/documentation/javascript/overview
 
 ## Installation
 
-``
+```
 cd
 client
 npm install
@@ -18,7 +18,7 @@ npm install
 cd
 server
 npm install
-``
+```
 
 ## Knex/MySQL
 This project currently uses mock data from a MySql database. Please run the following in order to use see this data
