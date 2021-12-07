@@ -1,6 +1,5 @@
 import React from "react";
 import "./AddBook.scss";
-
 import x from "../../Assets/Icons/close_black_24dp.svg";
 
 function AddBook(props) {
