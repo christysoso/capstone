@@ -53,6 +53,7 @@ function BookListPage() {
       </article>
 
       <section className="bookSearch">
+        
         <form className="bookSearch__search" onSubmit={searchSubmit}>
           <input
             className="bookSearch__search--input"
@@ -69,9 +70,10 @@ function BookListPage() {
             />
           </button>
 
-          <div className="bookSearch__search--bg">hello</div>
+          
         </form>
-
+        <div className="bookSearch__search--bg">hello</div>
+    
         <ul className="bookList">
           <h1 className="bookList__title">All Books ({bookList.length})</h1>
           {bookList.length > 0 ? bookList : "No books found"}

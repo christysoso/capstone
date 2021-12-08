@@ -25,6 +25,7 @@ class LibrariesBooksPage extends React.Component {
   };
 
   updateAddOption = (status, library) => {
+    window.scrollTo(0, 600);
     this.setState({ isAddDisplayModal: status, modalInfoAdd: library });
   };
 

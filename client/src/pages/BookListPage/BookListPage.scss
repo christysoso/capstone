@@ -12,6 +12,7 @@
 
   &__info {
     margin: toRem(16);
+
   }
 
   &__icon {
@@ -25,18 +26,18 @@
     background-color: $btn-color2;
     border: solid $text-color 2px;
     border-radius: 20px;
-    margin: toRem(32);
+    margin: 0 toRem(32);
     width: 70%;
     height: toRem(40);
     color: $btn-color2;
-    position: absolute;
+    position: relative;
     z-index: -10;
     left: toRem(5);
-    top: toRem(213);
+    top: toRem(-34);
   }
 
   &__search {
-    margin: toRem(32);
+    margin: toRem(32) toRem(32) 0 toRem(32);
     display: flex;
     border: 2px solid $text-color;
     border-radius: 20px;
@@ -66,7 +67,7 @@
 }
 
 .bookList {
-  margin: toRem(16);
+  margin: 0 toRem(16) toRem(16) toRem(16);
 
   &__title {
     margin-bottom: toRem(16);
